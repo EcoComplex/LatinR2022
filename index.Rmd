@@ -119,7 +119,8 @@ nets %>% slice_tail(n=7) %>%
 ```{r, echo=TRUE, eval=FALSE}
 g <- netData[[23]] 
 set.seed(2)
-plot_troph_level(g,modules = FALSE)
+plot_troph_level(g,modules = FALSE,ylab="Trophic level")
+
 ```
 ]
 
@@ -128,7 +129,7 @@ plot_troph_level(g,modules = FALSE)
 ```{r, echo=FALSE, eval=TRUE}
 g <- netData[[23]] 
 set.seed(2)
-plot_troph_level(g,modules = FALSE)
+plot_troph_level(g,modules = FALSE,ylab="Trophic level")
 ```
 ]
 
@@ -140,7 +141,7 @@ plot_troph_level(g,modules = FALSE)
 ```{r, echo=TRUE, eval=FALSE}
 g <- netData[[23]] 
 set.seed(2)
-plot_troph_level(g,modules = TRUE)
+plot_troph_level(g,modules = TRUE,ylab="Trophic level")
 ```
 ]
 
@@ -149,7 +150,7 @@ plot_troph_level(g,modules = TRUE)
 ```{r, echo=FALSE, eval=TRUE}
 g <- netData[[23]] 
 set.seed(2)
-plot_troph_level(g,modules = TRUE)
+plot_troph_level(g,modules = TRUE,ylab="Trophic level")
 ```
 ]
 
@@ -197,7 +198,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ---
 # Calcular la Intensidad de Interacción
 
-* Usamos el método de Pawar et al. 2012 "Dimensionality of consumer search space drives trophic interaction strengths"
+* Usamos el método de Pawar et al. 2012 "Dimensionality of consumer search space drives trophic interaction strengths" https://doi.org/10.1038/nature11131
 
 --
 
@@ -210,7 +211,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ---
 # Calcular la Intensidad de Interacción
 
-* Se basa en regresiones alometricas que relacionan la tasa de busqueda y consumo con la masa corporal del depredador
+* Se basa en regresiones alométricas que relacionan la tasa de búsqueda y consumo con la masa corporal del depredador
 
 --
 
