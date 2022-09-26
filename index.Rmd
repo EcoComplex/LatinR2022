@@ -23,14 +23,19 @@ background-size: 120px
 background-position: 5% 5%
 
 # Multiweb: análisis de redes ecológicas 
-
+.pull-left[
 ### [Leonardo A. Saravia](https://lsaravia.github.io) <img style="vertical-align:middle;"  src="Figures/CADIClogo.png" width="100px"/>
-
-### [Tomás I. Marina](https://www.researchgate.net/profile/Tomas-Marina) <img style="vertical-align:middle;"  src="Figures/CADIClogo.png" width="100px"/>
 
 ###  [Iara D. Rodríguez](https://www.researchgate.net/profile/Iara-Rodriguez-2) <img style="vertical-align:middle;"  src="Figures/ungs_logo.png" width="150px"/>
 
+]
+
+.pull-right[
+### [Tomás I. Marina](https://www.researchgate.net/profile/Tomas-Marina) <img style="vertical-align:middle;"  src="Figures/CADIClogo.png" width="100px"/>
+
 ###  [Susanne Kortsch](https://www.researchgate.net/profile/Susanne-Kortsch) <img style="vertical-align:middle;"  src="Figures/UHelsinki.png" width="150px"/>
+]
+.left[Slides https://ecocomplex.github.io/LatinR2022]
 
 ```{r xaringan-scribble, echo=FALSE,message=FALSE}
 xaringanExtra::use_scribble()
