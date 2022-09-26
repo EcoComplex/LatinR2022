@@ -1,0 +1,256 @@
+---
+title: "Multiweb: análisis de redes ecológicas "
+subtitle: ""
+author: 
+institute: ""
+date: " 12-14 de octubre de 2022"
+output:
+  xaringan::moon_reader:
+    seal: false
+    self_contained: true        
+    css: css/leo.css
+    lib_dir: libs
+    nature:
+      ratio: '16:9'
+      countIncrementalSlides: true
+      countdown: 30000
+editor_options: 
+  chunk_output_type: console
+---
+class:  center, middle, title-slide
+background-image: url("Figures/LatinR_LOGOS-23.png")
+background-size: 120px
+background-position: 5% 5%
+
+# Multiweb: análisis de redes ecológicas 
+
+### [Leonardo A. Saravia](https://lsaravia.github.io) <img style="vertical-align:middle;"  src="Figures/CADIClogo.png" width="100px"/>
+
+### [Tomás I. Marina](https://www.researchgate.net/profile/Tomas-Marina) <img style="vertical-align:middle;"  src="Figures/CADIClogo.png" width="100px"/>
+
+###  [Iara D. Rodríguez](https://www.researchgate.net/profile/Iara-Rodriguez-2) <img style="vertical-align:middle;"  src="Figures/ungs_logo.png" width="150px"/>
+
+###  [Susanne Kortsch](https://www.researchgate.net/profile/Susanne-Kortsch) <img style="vertical-align:middle;"  src="Figures/UHelsinki.png" width="150px"/>
+
+```{r xaringan-scribble, echo=FALSE,message=FALSE}
+xaringanExtra::use_scribble()
+#xaringanExtra::use_webcam()
+require(igraph)
+require(multiweb)
+require(dplyr)
+require(ggplot2)
+load(".RData")
+
+```
+
+
+---
+# Redes ecológicas multicapa
+
+* El paquete estaba pensado para analizar redes con multiples capas
+
+.center[
+<img src="Figures/MultilayerNetworks.png" width="60%">
+]
+
+???
+
+* Se fue desarrollando a medida que avanzaban los trabajos del grupo de investigación
+
+* Solamente se desrrolló con más de un tipo de interacción
+ 
+
+---
+
+class: middle, center
+
+# Colección de 29 redes 
+
+```{r metadata, echo=FALSE,warning=FALSE,message=FALSE}
+
+
+
+# require(ggwordcloud)
+# names(metadata)
+# set.seed(1)
+# metadata %>% mutate(size = sample(1:1000,1)) %>%  ggplot( aes(label = Network,size=size )) +
+#   geom_text_wordcloud_area(rm_outside = TRUE) +
+#   scale_size_area(max_size = 20) + 
+#   theme_minimal()
+metadata %>% dplyr::select(-Reference) %>% head() %>%
+  knitr::kable(format = "html",digits=2)
+
+```
+
+---
+# Cálculo de propiedades topológicas
+
+```{r, echo=TRUE, eval=TRUE,message=FALSE}
+nets <- calc_topological_indices(netData)
+```
+
+```{r, echo=FALSE}
+set.seed(2)
+nets %>% slice_head(n=7) %>%
+  knitr::kable(format = "html",digits=2)
+```
+
+---
+# Cálculo de propiedades topológicas
+
+```{r, echo=TRUE, eval=FALSE}
+nets <- calc_topological_indices(netData)
+```
+
+```{r, echo=FALSE}
+nets %>% slice_tail(n=7) %>% 
+  knitr::kable(format = "html",digits=2)
+```
+
+---
+# Red de Caleta Potter - Antartida
+
+.pull-left[
+```{r, echo=TRUE, eval=FALSE}
+g <- netData[[23]] 
+set.seed(2)
+plot_troph_level(g,modules = FALSE)
+```
+]
+
+--
+.pull-right[
+```{r, echo=FALSE, eval=TRUE}
+g <- netData[[23]] 
+set.seed(2)
+plot_troph_level(g,modules = FALSE)
+```
+]
+
+
+---
+# Red de Caleta Potter - Antartida
+
+.pull-left[
+```{r, echo=TRUE, eval=FALSE}
+g <- netData[[23]] 
+set.seed(2)
+plot_troph_level(g,modules = TRUE)
+```
+]
+
+--
+.pull-right[
+```{r, echo=FALSE, eval=TRUE}
+g <- netData[[23]] 
+set.seed(2)
+plot_troph_level(g,modules = TRUE)
+```
+]
+
+
+---
+# Calcular Roles topologicos
+
+```{r, echo=TRUE, eval=FALSE}
+g <- netData[[23]] 
+top_rol <- calc_topological_roles (g, nsim = 10, ncores = 4)
+
+```
+--
+```{r, echo=FALSE}
+top_rol %>% arrange(node) %>% slice_head(n=11) %>% 
+  knitr::kable(format = "html",digits=2)
+```
+
+---
+# Calcular Roles topologicos
+
+```{r, echo=TRUE,eval=FALSE,message=FALSE}
+classify_topological_roles(top_rol,g,plt=TRUE)
+```
+
+
+.center[
+```{r plot_toprol, echo=FALSE,message=FALSE}
+
+classify_topological_roles(top_rol,g,plt=TRUE)
+```
+]
+---
+# Calcular Roles topologicos
+
+```{r, echo=TRUE,eval=FALSE,message=FALSE}
+classify_topological_roles(top_rol,g,plt=TRUE)
+```
+
+
+.center[
+![](Figures/plot_toprol-1.png)
+]
+
+---
+# Calcular la Intensidad de Interacción
+
+* Usamos el método de Pawar et al. 2012 "Dimensionality of consumer search space drives trophic interaction strengths"
+
+--
+
+* Necesitamos la masa corporal en Kg del depredador, la presa y  la dimensionalidad de la interacción "3D"/"2D"
+--
+
+.center[
+<img src="Figures/Pred2D3D.png" width="50%">
+]
+---
+# Calcular la Intensidad de Interacción
+
+* Se basa en regresiones alometricas que relacionan la tasa de busqueda y consumo con la masa corporal del depredador
+
+--
+
+.center[
+<img src="Figures/SearchRateConsumerMass.png" width="50%">
+]
+
+---
+# Calcular la Intensidad de Interacción
+
+
+```{r calc_intstr, echo=TRUE,message=FALSE,eval=FALSE}
+calc_interaction_intensity(web_df,res_mass, con_mass,int_dim)
+```
+
+--
+
+```{r calc_intstr1, echo=FALSE,message=FALSE,eval=TRUE}
+set.seed(1234)
+web_df <- web_df %>% rename(res_mass=res.mass.mean.kg.,con_mass = con.mass.mean.kg.,int_dim = interaction.dimensionality)
+calc_interaction_intensity(web_df,res_mass,con_mass,int_dim) %>% dplyr::select(c(con.taxonomy:res.taxonomy,con_mass,int_dim, mR:qRC)) %>% arrange(con_mass) %>% slice_sample(n=11) %>% mutate_if(is.numeric, ~(as.character(signif(.x, 3)))) %>% knitr::kable(format = "html")
+
+
+```
+
+---
+class: inverse, center
+
+# Mucho por hacer 
+
+--
+## Test unitarios <img src="Figures/unittest.png" width="10%" align="middle">
+
+--
+## Viñetas! <img src="Figures/vignetteR.jpg" width="10%" align="middle">
+
+--
+##  Mas soporte para las redes multiplex <img src="Figures/multiplex.jpg" width="10%" align="middle">
+
+---
+background-image: url(Figures/simpsons_yate.webp)
+background-size: contain
+
+
+class: center, top    
+
+# ESTE NO ES EL FIN 
+
