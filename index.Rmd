@@ -52,7 +52,7 @@ load(".RData")
 ---
 # Redes ecológicas multicapa
 
-* El paquete estaba pensado para analizar redes con multiples capas
+* El paquete estaba pensado para analizar redes con múltiples capas
 
 .center[
 <img src="Figures/MultilayerNetworks.png" width="60%">
@@ -62,14 +62,14 @@ load(".RData")
 
 * Se fue desarrollando a medida que avanzaban los trabajos del grupo de investigación
 
-* Solamente se desrrolló con más de un tipo de interacción
+* Solamente se desarrolló con más de un tipo de interacción
  
 
 ---
 
 class: middle, center
 
-# Colección de 29 redes 
+# Colección de 29 redes tróficas
 
 ```{r metadata, echo=FALSE,warning=FALSE,message=FALSE}
 
@@ -113,7 +113,7 @@ nets %>% slice_tail(n=7) %>%
 ```
 
 ---
-# Red de Caleta Potter - Antartida
+# Red de Caleta Potter - Antártida
 
 .pull-left[
 ```{r, echo=TRUE, eval=FALSE}
@@ -134,7 +134,7 @@ plot_troph_level(g,modules = FALSE)
 
 
 ---
-# Red de Caleta Potter - Antartida
+# Red de Caleta Potter - Antártida
 
 .pull-left[
 ```{r, echo=TRUE, eval=FALSE}
@@ -155,7 +155,7 @@ plot_troph_level(g,modules = TRUE)
 
 
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 ```{r, echo=TRUE, eval=FALSE}
 g <- netData[[23]] 
@@ -169,7 +169,7 @@ top_rol %>% arrange(node) %>% slice_head(n=11) %>%
 ```
 
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 ```{r, echo=TRUE,eval=FALSE,message=FALSE}
 classify_topological_roles(top_rol,g,plt=TRUE)
@@ -183,7 +183,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ```
 ]
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 ```{r, echo=TRUE,eval=FALSE,message=FALSE}
 classify_topological_roles(top_rol,g,plt=TRUE)
@@ -201,7 +201,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 
 --
 
-* Necesitamos la masa corporal en Kg del depredador, la presa y  la dimensionalidad de la interacción "3D"/"2D"
+* Necesitamos la masa corporal (en Kg) del depredador, la presa y  la dimensionalidad de la interacción "3D"/"2D"
 --
 
 .center[
@@ -245,7 +245,7 @@ class: inverse, center
 ## Test unitarios <img src="Figures/unittest.png" width="10%" align="middle">
 
 --
-## Viñetas! <img src="Figures/vignetteR.jpg" width="10%" align="middle">
+## ¡Viñetas! <img src="Figures/vignetteR.jpg" width="10%" align="middle">
 
 --
 ##  Más soporte para las redes multiplex <img src="Figures/multiplex.jpg" width="10%" align="middle">
