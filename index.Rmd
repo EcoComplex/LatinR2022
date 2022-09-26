@@ -248,7 +248,7 @@ class: inverse, center
 ## Viñetas! <img src="Figures/vignetteR.jpg" width="10%" align="middle">
 
 --
-##  Mas soporte para las redes multiplex <img src="Figures/multiplex.jpg" width="10%" align="middle">
+##  Más soporte para las redes multiplex <img src="Figures/multiplex.jpg" width="10%" align="middle">
 
 ---
 background-image: url(Figures/simpsons_yate.webp)
