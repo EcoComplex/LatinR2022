@@ -945,7 +945,7 @@ background-position: 5% 5%
 ---
 # Redes ecológicas multicapa
 
-* El paquete estaba pensado para analizar redes con multiples capas
+* El paquete estaba pensado para analizar redes con múltiples capas
 
 .center[
 &lt;img src=&quot;Figures/MultilayerNetworks.png&quot; width=&quot;60%&quot;&gt;
@@ -955,14 +955,14 @@ background-position: 5% 5%
 
 * Se fue desarrollando a medida que avanzaban los trabajos del grupo de investigación
 
-* Solamente se desrrolló con más de un tipo de interacción
+* Solamente se desarrolló con más de un tipo de interacción
  
 
 ---
 
 class: middle, center
 
-# Colección de 29 redes 
+# Colección de 29 redes tróficas
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -1394,7 +1394,7 @@ nets &lt;- calc_topological_indices(netData)
 &lt;/table&gt;
 
 ---
-# Red de Caleta Potter - Antartida
+# Red de Caleta Potter - Antártida
 
 .pull-left[
 
@@ -1412,7 +1412,7 @@ plot_troph_level(g,modules = FALSE)
 
 
 ---
-# Red de Caleta Potter - Antartida
+# Red de Caleta Potter - Antártida
 
 .pull-left[
 
@@ -1430,7 +1430,7 @@ plot_troph_level(g,modules = TRUE)
 
 
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 
 ```r
@@ -1506,7 +1506,7 @@ top_rol &lt;- calc_topological_roles (g, nsim = 10, ncores = 4)
 &lt;/table&gt;
 
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 
 ```r
@@ -1743,7 +1743,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ```
 ]
 ---
-# Calcular Roles topologicos
+# Calcular Roles Topológicos
 
 
 ```r
@@ -1758,11 +1758,11 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ---
 # Calcular la Intensidad de Interacción
 
-* Usamos el método de Pawar et al. 2012 &quot;Dimensionality of consumer search space drives trophic interaction strengths&quot;
+* Usamos el método de Pawar et al. 2012 &quot;Dimensionality of consumer search space drives trophic interaction strengths&quot; https://doi.org/10.1038/nature11131
 
 --
 
-* Necesitamos la masa corporal en Kg del depredador, la presa y  la dimensionalidad de la interacción &quot;3D&quot;/&quot;2D&quot;
+* Necesitamos la masa corporal (en Kg) del depredador, la presa y  la dimensionalidad de la interacción &quot;3D&quot;/&quot;2D&quot;
 --
 
 .center[
@@ -1771,7 +1771,7 @@ classify_topological_roles(top_rol,g,plt=TRUE)
 ---
 # Calcular la Intensidad de Interacción
 
-* Se basa en regresiones alometricas que relacionan la tasa de busqueda y consumo con la masa corporal del depredador
+* Se basa en regresiones alométricas que relacionan la tasa de búsqueda y consumo con la masa corporal del depredador
 
 --
 
@@ -1926,10 +1926,12 @@ class: inverse, center
 ## Test unitarios &lt;img src=&quot;Figures/unittest.png&quot; width=&quot;10%&quot; align=&quot;middle&quot;&gt;
 
 --
-## Viñetas! &lt;img src=&quot;Figures/vignetteR.jpg&quot; width=&quot;10%&quot; align=&quot;middle&quot;&gt;
+## ¡Viñetas! &lt;img src=&quot;Figures/vignetteR.jpg&quot; width=&quot;10%&quot; align=&quot;middle&quot;&gt;
 
 --
 ##  Más soporte para las redes multiplex &lt;img src=&quot;Figures/multiplex.jpg&quot; width=&quot;10%&quot; align=&quot;middle&quot;&gt;
+
+.footnote[ Repositorio https://github.com/EcoComplex/LatinR2022]
 
 ---
 background-image: url(data:image/png;base64,#Figures/simpsons_yate.webp)
