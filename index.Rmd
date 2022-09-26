@@ -35,7 +35,7 @@ background-position: 5% 5%
 
 ###  [Susanne Kortsch](https://www.researchgate.net/profile/Susanne-Kortsch) <img style="vertical-align:middle;"  src="Figures/UHelsinki.png" width="150px"/>
 ]
-.left[Slides https://ecocomplex.github.io/LatinR2022]
+.footnote[Slides https://ecocomplex.github.io/LatinR2022]
 
 ```{r xaringan-scribble, echo=FALSE,message=FALSE}
 xaringanExtra::use_scribble()
